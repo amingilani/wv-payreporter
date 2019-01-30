@@ -1,2 +1,8 @@
-<h1>PayrollReport#index</h1>
-<p>Find me in app/views/payroll_report/index.html.erb</p>
+<h1>Payroll Report</h1>
+
+<p> Upload a new file </p>
+
+<%= form_tag({action: :create, controller: :time_reports}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag( "Import" ) %>
+<% end %>
