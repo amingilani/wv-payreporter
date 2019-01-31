@@ -1,8 +1,21 @@
 <h1>Payroll Report</h1>
 
+<% unless flash.empty? %>
+    <div id="flash">
+        <% flash.keys.each do |k| %>
+            <div class="<%= k %>">
+                <%= flash[k] %>
+            </div>  
+        <% end %>
+    </div>
+<% end %>
+
+
 <p> Upload a new file </p>
 
 <%= form_tag({action: :create, controller: :time_reports}, multipart: true) do %>
   <%= file_field_tag :file %>
   <%= submit_tag( "Import" ) %>
 <% end %>
+
+<%= console %>
