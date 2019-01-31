@@ -5,7 +5,7 @@
         <% flash.keys.each do |k| %>
             <div class="<%= k %>">
                 <%= flash[k] %>
-            </div>  
+            </div>
         <% end %>
     </div>
 <% end %>
@@ -17,5 +17,24 @@
   <%= file_field_tag :file %>
   <%= submit_tag( "Import" ) %>
 <% end %>
+
+<h2> Pay Report </h2>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>Employee ID</th>
+    <th>Pay Period</th>
+    <th>Amount Paid</th>
+  </tr></thead>
+  <tbody>
+    <% @payroll_report.each do |line| %>
+    <tr>
+      <td data-label="Name"><%= line[:employee_id] %></td>
+      <td data-label="Age"><%= "#{line[:start_date]} - #{line[:end_date]}" %></td>
+      <td data-label="Job"><%= line[:amount_paid].format %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= console %>
