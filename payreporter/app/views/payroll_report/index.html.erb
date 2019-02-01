@@ -22,15 +22,17 @@
 
 <table class="ui celled table">
   <thead>
-    <tr><th>Employee ID</th>
-    <th>Pay Period</th>
-    <th>Amount Paid</th>
-  </tr></thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Pay Period</th>
+      <th>Amount Paid</th>
+    </tr>
+  </thead>
   <tbody>
     <% @payroll_report.each do |line| %>
     <tr>
       <td data-label="Name"><%= line[:employee_id] %></td>
-      <td data-label="Age"><%= "#{line[:start_date]} - #{line[:end_date]}" %></td>
+      <td data-label="Age"><%= "#{line[:start_date].strftime("%-d/%-m/%Y")} - #{line[:end_date].strftime("%-d/%-m/%Y")}" %></td>
       <td data-label="Job"><%= line[:amount_paid].format %></td>
     </tr>
     <% end %>
