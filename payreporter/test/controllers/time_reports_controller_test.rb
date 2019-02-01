@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'csv'
 
 class TimeReportsControllerTest < ActionDispatch::IntegrationTest
   test 'creating a valid and trying to create an invalid time report' do
@@ -27,5 +28,11 @@ class TimeReportsControllerTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_select 'div', 'A time report with this report id was already imported.'
+
+    get payroll_report_url(format: :csv)
+    assert_response :success
+
+    get payroll_report_url(format: :json)
+    assert_response :success
   end
 end
