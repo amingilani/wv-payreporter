@@ -1,0 +1,24 @@
+%h1 Payroll Report
+- unless flash.empty?
+  #flash
+    - flash.keys.each do |k|
+      %div{:class => k}
+        = flash[k]
+%p Upload a new file
+= form_tag({action: :create, controller: :time_reports}, multipart: true) do
+  = file_field_tag :file
+  = submit_tag( "Import" )
+%h2 Pay Report
+%table.ui.celled.table
+  %thead
+    %tr
+      %th Employee ID
+      %th Pay Period
+      %th Amount Paid
+  %tbody
+    - @payroll_report.each do |line|
+      %tr
+        %td{"data-label" => "Name"}= line[:employee_id]
+        %td{"data-label" => "Age"}= "#{line[:start_date].strftime("%-d/%-m/%Y")} - #{line[:end_date].strftime("%-d/%-m/%Y")}"
+        %td{"data-label" => "Job"}= line[:amount_paid].format
+= console if Rails.env.development?

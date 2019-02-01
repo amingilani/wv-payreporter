@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Payreporter
+    = csrf_meta_tags
+    = csp_meta_tag
+    %link{:crossorigin => "anonymous", :href => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css", :integrity => "sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=", :rel => "stylesheet"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %body
+    = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{:crossorigin => "anonymous", :integrity => "sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=", :src => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"}
