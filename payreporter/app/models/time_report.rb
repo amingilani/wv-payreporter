@@ -36,7 +36,7 @@ class TimeReport
     true
   rescue StandardError => error
     Rails.logger.warn error # I'm not in a real model, so I have to prepend Rails.
-    return false
+    false
   end
 
   # the raw CSV data from the file sans `report id`
