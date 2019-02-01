@@ -19,12 +19,12 @@ one:
   date: 2019-01-31
   hours_worked: 9.99
   employee_id: 1
-  job_group: MyString
+  wage_cents: 1500
   report_id: 1
 
 two:
   date: 2019-01-31
   hours_worked: 9.99
   employee_id: 1
-  job_group: MyString
+  wage_cents: 1500
   report_id: 1

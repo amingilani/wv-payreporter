@@ -57,7 +57,7 @@ class TimeReport
       errors
         .add(
           :report_id,
-          'A time report with this report id was already imported'
+          'A time report with this report id was already imported.'
         )
     end
   end
