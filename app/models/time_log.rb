@@ -13,6 +13,7 @@
 #  report_id     :integer
 #
 
+# These make up the individual time logs
 class TimeLog < ApplicationRecord
   monetize :wage_cents
 end

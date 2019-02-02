@@ -1,7 +1,7 @@
-# This is a tableless model
-
 require 'csv'
 
+# This is a tableless model, it parses CSV Time Reports and their individual Time Logs in the
+# database
 class TimeReport
   include ActiveModel::Model
 
