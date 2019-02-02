@@ -25,4 +25,4 @@
         %i.file.excel.outline.icon
         Download CSV
 
-    = render partial: @partial, locals: {payroll_report: @payroll_report}
+    = render partial: @printer ? 'printer_friendly_report' : 'human_friendly_report', locals: {payroll_report: @payroll_report}
