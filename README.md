@@ -100,11 +100,27 @@ to end up with a _free_ CI/CD flow that looks like this:
 
 Evaluation of your submission will be based on the following criteria.
 
-1. Did you follow the instructions for submission?  **Yes, or I will when I submit this.**
-1. Did you document your build/deploy instructions and your explanation of what
-   you did well?
-1. Were models/entities and other components easily identifiable to the
-   reviewer? **Yes. I've documented everything, so they should be.**
-1. What design decisions did you make when designing your models/entities? Are they explained? **I used a tableless model and service objects, as well as raw SQL queries instead of ActiveRecord/Arel queries or even mapping through the data in memory. Justification for these is given in more detail above**
-1. Did you separate any concerns in your application? Why or why not? **No, this app wasn't complicated enough to require shared logic. Infact, no controllers or models share any logic**
-1. Does your solution use appropriate data types for the problem as described? **Data-types weren't described. I inferred them, and this question made me feel like you _wanted_ me to use an integer for Report IDs. In real life, however, I would've used a string because they're meta properties the user supplied, and one user's Report IDs data-type don't necessarily have to match another's**
+
+> 1. Did you follow the instructions for submission?
+
+Yes, or I will when I submit this.
+
+> 2. Did you document your build/deploy instructions and your explanation of what you did well?
+
+Yes
+
+> 3. Were models/entities and other components easily identifiable to the reviewer?
+
+Yes. I've documented everything, so they should be.
+
+> 4. What design decisions did you make when designing your models/entities? Are they explained?
+
+I used a tableless model and service objects, as well as raw SQL queries instead of ActiveRecord/Arel queries or even mapping through the data in memory. Justification for these is given in more detail above
+
+> 5. Did you separate any concerns in your application? Why or why not?
+
+No, this app wasn't complicated enough to require shared logic. Infact, no controllers or models share any logic
+
+> 6. Does your solution use appropriate data types for the problem as described?
+
+Data-types weren't described. I inferred them, and this question made me feel like you _wanted_ me to use an integer for Report IDs. In real life, however, I would've used a string because they're meta properties the user supplied, and one user's Report IDs data-type don't necessarily have to match another's
