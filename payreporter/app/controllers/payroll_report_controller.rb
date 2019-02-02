@@ -1,7 +1,8 @@
 
 class PayrollReportController < ApplicationController
   def index
-    @payroll_report = PayrollManager::Reporter.call
+    @payroll_report = PayrollManager::Reporter.call # fetch the report
+    @partial = params[:printer] == 'true' ? 'printer_friendly_report' : 'human_friendly_report' # are we meant to render the printer friendly version?
     respond_to do |format|
       format.html
       format.json { render json: PayrollManager::ReportJsonFormatter.call(@payroll_report) }

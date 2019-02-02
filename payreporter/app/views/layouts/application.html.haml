@@ -9,14 +9,16 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
     = yield
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{:crossorigin => "anonymous", :integrity => "sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=", :src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
+    %script{:crossorigin => "anonymous", :integrity => "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", :src => "https://code.jquery.com/jquery-3.3.1.min.js"}
     %script{:crossorigin => "anonymous", :integrity => "sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=", :src => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"}
     :javascript
-      $('.message .close')
-        .on('click', function() {
-          $(this)
-            .closest('.message')
-            .transition('fade')
-          ;
-        });
+      $(document).ready(function() {
+        $('.message .close')
+          .on('click', function() {
+            $(this)
+              .closest('.message')
+              .transition('fade')
+            ;
+          });
+        $('.ui.accordion').accordion();
+      })
