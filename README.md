@@ -1,6 +1,6 @@
 # PayReporter
 
-This is a solution to Wave's [se-challenge-payroll](https://github.com/wvchallenges/se-challenge-payroll) challenge. This application goes beyond the challenge outlined in the assignment and goes beyond the initial requirement.
+This app is a solution to Wave's [se-challenge-payroll](https://github.com/wvchallenges/se-challenge-payroll) challenge. This application goes beyond the challenge outlined in the assignment and goes beyond the initial requirement.
 
 Please note, while this application remains easy to review, some of the design decisions were optimized to show off my skills and would not reflect decisions I'd usually take while building an MVP. E.g. I could have either used only service objects or only tableless models. Instead, to show off my ability in each, I used both service objects and created a tableless model.
 
@@ -57,8 +57,8 @@ I prefer HAML because I don't like typing.
 * `app/views/layouts/application.html.haml`: the layout only renders the body and, two partials:
   * `_header.html.haml`: is rendered before pages, contains the header that runs across the top of the page, and loads stylesheets with subresource integrity
   * `_footer.html.haml`: is rendered after pages, loads external javascript with subresource integrity, and contains some custom JavaScript.
-* `app/views/payroll_report/index.html.haml`: This renders the index page, and depending on the of `@printer` passed onto it by the controller renders one of two partials:
-  * `_human_friendly_report.html.haml`: A human friendly version of the Payroll Report
+* `app/views/payroll_report/index.html.haml`: Renders the index page, and depending on the of `@printer` passed onto it by the controller renders one of two partials:
+  * `_human_friendly_report.html.haml`: A human-friendly version of the Payroll Report
   * `_printer_friendly_report.html.haml`: A printer friendly version of the Payroll Report
 
 
@@ -69,12 +69,12 @@ Everything about getting the app up and running
 ### Testing
 
 * For linting errors run `bundle exec rubocop`
-* For tests and coverage reportrun `bundle exec rails test`
+* For tests and coverage report run `bundle exec rails test`
 
 ### Development
 
 1. Use rvm
-1. Instal the appropriate Ruby as declared in the Gemfile
+1. Install the appropriate Ruby as declared in the Gemfile
 1. Run `bundle exec rails s`
 1. visit `http://localhost:3000`
 
@@ -90,7 +90,7 @@ Everything about getting the app up and running
 
 ### CI/CD
 
-While I usually wouldn't mind documenting a wonderful CI/CD solution here, I've already done it in
+While I usually wouldn't mind documenting a fantastic CI/CD solution here, I've already done it in
 [_How to Build an Effective Initial Deployment Pipeline_](https://www.toptal.com/devops/effective-ci-cd-deployment-pipeline) and so, documenting it here again would be redundant. I've added a template (`.gitlab-ci.yml.template`) that requires you to tweak `$INSERAPPNAME`. Follow the instructions in the article
 to end up with a _free_ CI/CD flow that looks like this:
 
@@ -115,12 +115,12 @@ Yes. I've documented everything, so they should be.
 
 > 4. What design decisions did you make when designing your models/entities? Are they explained?
 
-I used a tableless model and service objects, as well as raw SQL queries instead of ActiveRecord/Arel queries or even mapping through the data in memory. Justification for these is given in more detail above
+I used a tableless model and service objects, as well as raw SQL queries instead of ActiveRecord/Arel queries or even mapping through the data in memory. The justification for these is available above.
 
 > 5. Did you separate any concerns in your application? Why or why not?
 
-No, this app wasn't complicated enough to require shared logic. Infact, no controllers or models share any logic
+No, this app wasn't complicated enough to require shared logic. In fact, no controllers or models share any logic
 
 > 6. Does your solution use appropriate data types for the problem as described?
 
-Data-types weren't described. I inferred them, and this question made me feel like you _wanted_ me to use an integer for Report IDs. In real life, however, I would've used a string because they're meta properties the user supplied, and one user's Report IDs data-type don't necessarily have to match another's
+Data-types were not described. I inferred them, and this question made me feel like you _wanted_ me to use an integer for Report IDs. In real life, however, I would've used a string because they're meta properties the user supplied, and one user's Report IDs data-type don't necessarily have to match another's
