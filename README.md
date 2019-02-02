@@ -66,6 +66,11 @@ I prefer HAML because I don't like typing.
 
 Everything about getting the app up and running
 
+### Testing
+
+* For linting errors run `bundle exec rubocop`
+* For tests and coverage reportrun `bundle exec rails test`
+
 ### Development
 
 1. Use rvm
