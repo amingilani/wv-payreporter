@@ -2,29 +2,35 @@ require 'test_helper'
 require 'csv'
 
 class ReportCsvFormatter < ActionDispatch::IntegrationTest
-  EXPECTED_CSV = "start_date,employee_id,amount_paid,end_date\n"\
-  "2015-02-16,4,100.00,2015-02-28\n"\
-  "2016-02-16,4,150.00,2016-02-29\n"\
-  "2016-11-01,1,150.00,2016-11-15\n"\
-  "2016-11-01,2,930.00,2016-11-15\n"\
-  "2016-11-01,3,590.00,2016-11-15\n"\
-  "2016-11-01,4,150.00,2016-11-15\n"\
-  "2016-11-16,1,220.00,2016-11-30\n"\
-  "2016-11-16,4,450.00,2016-11-30\n"\
-  "2016-12-01,1,150.00,2016-12-15\n"\
-  "2016-12-01,2,930.00,2016-12-15\n"\
-  "2016-12-01,3,470.00,2016-12-15\n"\
-  "2016-12-01,4,150.00,2016-12-15\n"\
-  "2016-12-16,1,220.00,2016-12-31\n"\
-  "2016-12-16,4,450.00,2016-12-31\n".freeze
+  EXPECTED_CSV = <<~HEREDOC
+    employee_id,amount_paid,pay_period
+    4,100.00,16/2/2015 - 28/2/2015
+    4,150.00,16/2/2016 - 29/2/2016
+    1,150.00,1/11/2016 - 15/11/2016
+    2,930.00,1/11/2016 - 15/11/2016
+    3,590.00,1/11/2016 - 15/11/2016
+    4,150.00,1/11/2016 - 15/11/2016
+    1,220.00,16/11/2016 - 30/11/2016
+    4,450.00,16/11/2016 - 30/11/2016
+    1,150.00,1/12/2016 - 15/12/2016
+    2,930.00,1/12/2016 - 15/12/2016
+    3,470.00,1/12/2016 - 15/12/2016
+    4,150.00,1/12/2016 - 15/12/2016
+    1,220.00,16/12/2016 - 31/12/2016
+    4,450.00,16/12/2016 - 31/12/2016
+  HEREDOC
+
+
 
   test 'creating a valid and trying to create an invalid time report' do
     post time_reports_url,
          params: {
-           file: fixture_file_upload(
-             Rails.root.join('test', 'fixtures', 'files', 'sample.csv'),
-             'text/csv'
-           )
+           time_report: {
+             file: fixture_file_upload(
+               Rails.root.join('test', 'fixtures', 'files', 'sample.csv'),
+               'text/csv'
+             )
+           }
          }
     payroll_report = PayrollManager::Reporter.call
     csv_actual = PayrollManager::ReportCsvFormatter.call payroll_report

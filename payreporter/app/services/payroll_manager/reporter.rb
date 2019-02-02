@@ -37,7 +37,8 @@ module PayrollManager
         e[:amount_paid] = (e[:amount_paid_cents].to_money / 100)
         e[:start_date] = e[:start_date].to_date
         e[:end_date] = e[:start_date].day > 15 ? e[:start_date].end_of_month : e[:start_date].beginning_of_month + 14
-        e.delete(:amount_paid_cents)
+        e[:pay_period] = "#{e[:start_date].strftime('%-d/%-m/%Y')} - #{e[:end_date].strftime('%-d/%-m/%Y')}"
+        %i[amount_paid_cents start_date end_date].each { |k| e.delete(k) }
         e
       end
     end

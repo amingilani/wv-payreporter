@@ -40,10 +40,12 @@ class TimeReportsControllerTest < ActionDispatch::IntegrationTest
   def import_a_time_report
     post time_reports_url,
          params: {
-           file: fixture_file_upload(
-             Rails.root.join('test', 'fixtures', 'files', 'sample.csv'),
-             'text/csv'
-           )
+           time_report: {
+             file: fixture_file_upload(
+               Rails.root.join('test', 'fixtures', 'files', 'sample.csv'),
+               'text/csv'
+             )
+           }
          }
   end
 end

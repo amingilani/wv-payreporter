@@ -1,6 +1,6 @@
 class TimeReportsController < ApplicationController
   def create
-    file = params[:file]
+    file = params[:time_report][:file]
     report = TimeReport.new(file: file)
     return redirect_to root_path, notice: 'Time report successfully saved.' if report.save
 
