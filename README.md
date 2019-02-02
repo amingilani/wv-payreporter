@@ -2,7 +2,9 @@
 
 This app is a solution to Wave's [se-challenge-payroll](https://github.com/wvchallenges/se-challenge-payroll) challenge. This application goes beyond the challenge outlined in the assignment and goes beyond the initial requirement.
 
-Please note, while this application remains easy to review, some of the design decisions were optimized to show off my skills and would not reflect decisions I'd usually take while building an MVP. E.g. I could have either used only service objects or only tableless models. Instead, to show off my ability in each, I used both service objects and created a tableless model.
+Please note, while this application remains easy to review, some of the design decisions were
+optimized to demonstrate my skills and would not reflect decisions I'd usually take while building
+an MVP.
 
 Key features:
 
@@ -20,6 +22,24 @@ Key features:
 + Custom Rubocop config
 + Beautiful code, if I say so myself
 + [`money`](https://github.com/Rubymoney/money) gem to handle monetary values
+
+## Design Decisions
+
++ Since I wanted to save the least amount of information possible in the database, I stored the
+  individual Time Logs in the database.
++ Instead of saving the `job_group` as originally given, I saved their corresponding wage rates of
+  $20 and $30, for A and B, respectively instead — this helps make the database more user neutral
+  and allows us to add more job groups in the future by modifying only one line of code. It also
+  means we can do the majority of our math in SQL
++ I could have either used only service objects or only tableless models. Instead, to demonstrate
+  my ability in each, I used both service objects and created a tableless model.
++ I used Semantic UI because I'm very comfortable with it, it's beautiful, and gives me almost
+  everything I could possibly need when making a prototype.
++ In addition to the required format, I provided a "human friendly" version of the Payroll Report
+  because that's how I'd have structured it in my own applications — it's a much better way to
+  interact with the data. It also allowed me to demonstrate my use of partials
++ I also allowed the Payroll Report to be downloaded as CSV, and served it over JSON to demonstrate
+  my abilities.
 
 ## Application
 
@@ -95,6 +115,16 @@ While I usually wouldn't mind documenting a fantastic CI/CD solution here, I've 
 to end up with a _free_ CI/CD flow that looks like this:
 
 ![Illustration of example CI/CD flow](https://uploads.toptal.io/blog/image/126047/toptal-blog-image-1525441763364-360ead3757f3b8cc747ce0ceb7891d84.png)
+
+## Things I didn't do
+
+1. I did not create a React front-end for this app, even though I can, because it simply wasn't
+  required. I'm familiar enough with the tech to use it when possible, I've given a sponsored
+  [React Workshop in Lahore, Pakistan](https://www.toptal.com/community/events/2018-03-18/react-workshop-lahore), I've used it in [a live app built during a hackathon](https://care.gilani.me), and made minor
+  use of it in production apps when the need justified it.
+1. I did not use Rspec for testing even though I usually exclusively use it. The time required
+  to setup Rspec didn't justify the use, and I ended up using Minitest for the same
+  effect.
 
 ## Evaluation
 
