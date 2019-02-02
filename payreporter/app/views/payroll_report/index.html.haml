@@ -1,24 +1,34 @@
-%h1 Payroll Report
-- unless flash.empty?
-  #flash
-    - flash.keys.each do |k|
-      %div{:class => k}
-        = flash[k]
-%p Upload a new file
-= form_tag({action: :create, controller: :time_reports}, multipart: true) do
-  = file_field_tag :file
-  = submit_tag( "Import" )
-%h2 Pay Report
-%table.ui.celled.table
-  %thead
-    %tr
-      %th Employee ID
-      %th Pay Period
-      %th Amount Paid
-  %tbody
-    - @payroll_report.each do |line|
-      %tr
-        %td{"data-label" => "Name"}= line[:employee_id]
-        %td{"data-label" => "Age"}= "#{line[:start_date].strftime("%-d/%-m/%Y")} - #{line[:end_date].strftime("%-d/%-m/%Y")}"
-        %td{"data-label" => "Job"}= line[:amount_paid].format
-= console if Rails.env.development?
+.ui.fluid.container
+  .ui.inverted.menu
+    .ui.container
+      %a.header.item{href: root_path }
+        PayrollReporter App
+.ui.text.container
+  %h1 PayrollReporter
+  - unless flash.empty?
+    - flash.each do |key, value|
+      %div{:class => "#{flash_class(key)} closable"}
+        %i.close.icon
+        = value
+
+  = simple_form_for TimeReport.new do |f|
+    = f.input :file, as: :file, label: 'Upload a time report', required: true
+    = f.button :submit, 'Import'
+
+  %h2 Payroll Report
+  - if @payroll_report.blank?
+    %p No reports available. Please upload a time report to get started.
+  - else
+    %p
+      %strong JSON API
+      available at
+      %code= "#{payroll_report_url}.json"
+
+
+    %a.ui.compact.labeled.icon.button{href: payroll_report_path(format: :csv)}
+      %i.file.excel.outline.icon
+      Download CSV
+
+    = render partial: 'printable_report', locals: {payroll_report: @payroll_report}
+
+  = console if Rails.env.development?

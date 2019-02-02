@@ -1,0 +1,14 @@
+%a{href: root_path} Human readable view
+
+%table.ui.celled.table
+  %thead
+    %tr
+      %th Employee ID
+      %th Pay Period
+      %th Amount Paid
+  %tbody
+    - @payroll_report.each do |line|
+      %tr
+        %td{"data-label" => "Name"}= line[:employee_id]
+        %td{"data-label" => "Age"}= line[:pay_period]
+        %td{"data-label" => "Job"}= line[:amount_paid].format
