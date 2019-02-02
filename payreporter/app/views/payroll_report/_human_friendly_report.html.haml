@@ -1,4 +1,6 @@
-%a{href: root_path(params: {printer: 'true'})} Printer friendly view
+%p
+  %a{href: root_path(params: {printer: 'true'})} View printer friendly
+
 .ui.styled.accordion
   - @payroll_report.group_by{|e| e[:pay_period]}.each do |pay_period|
     .title

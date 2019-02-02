@@ -1,8 +1,9 @@
-.ui.fluid.container
-  .ui.inverted.menu
+.ui.fluid.container#header
+  .ui.inverted.menu.header
     .ui.container
       %a.header.item{href: root_path }
         PayrollReporter App
+
 .ui.text.container
   %h1 PayrollReporter
   - unless flash.empty?
@@ -25,10 +26,9 @@
       %code= "#{payroll_report_url}.json"
 
 
-    %a.ui.compact.labeled.icon.button{href: payroll_report_path(format: :csv)}
-      %i.file.excel.outline.icon
-      Download CSV
+    %p
+      %a.ui.compact.labeled.icon.button{href: payroll_report_path(format: :csv)}
+        %i.file.excel.outline.icon
+        Download CSV
 
     = render partial: @partial, locals: {payroll_report: @payroll_report}
-
-  = console if Rails.env.development?
