@@ -22,6 +22,7 @@ Key features:
 + Custom Rubocop config
 + Beautiful code, if I say so myself
 + [`money`](https://github.com/Rubymoney/money) gem to handle monetary values
++ Impossible to upload anything except CSV
 
 ## Design Decisions
 

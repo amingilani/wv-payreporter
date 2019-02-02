@@ -7,7 +7,7 @@
         = value
 
   = simple_form_for TimeReport.new do |f|
-    = f.input :file, as: :file, label: 'Upload a time report', required: true
+    = f.input :file, {  as: :file, label: 'Upload a time report', input_html: {accept: 'text/csv'} }
     = f.button :submit, 'Import'
 
   %h2 Payroll Report
