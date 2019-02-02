@@ -5,7 +5,14 @@ module PayrollManager
   # Use like so: a = PayReporter.call
   class Reporter < ApplicationService
     # I'm using a raw SQL query because Active Record or even Arel doesn't allow
-    # advanced queries that typecast or allow data manipulation to such a degree
+    # advanced queries that typecast or allow data manipulation to such a degree.
+    # The Subquery:
+    # (1) multiplies hours_worked with wage_cents giving us the amount_paid_cents,
+    # and (2) using some clever rounding and typecasting, gives us the start_date for the pay period
+    # which is enough information for us to infer the period's ending date later, in our application
+    # The remaining query:
+    # Sums the amount_paid_cents for employees with multiple TimeLogs in the same Pay Period
+    # (proxied by the start_date), and then sorts first by start_date and employee_id
     SQL_QUERY = <<~HEREDOC.freeze
       SELECT start_date,
              SUM(amount_paid_cents) amount_paid_cents,
@@ -31,6 +38,7 @@ module PayrollManager
 
     private
 
+    # Format the SQL result to resemble the final Payroll Report required
     def decoration(raw_pay_report:)
       raw_pay_report.map do |e|
         e = e.symbolize_keys
