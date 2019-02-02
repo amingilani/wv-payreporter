@@ -61,6 +61,36 @@ I prefer HAML because I don't like typing.
   * `_human_friendly_report.html.haml`: A human friendly version of the Payroll Report
   * `_printer_friendly_report.html.haml`: A printer friendly version of the Payroll Report
 
+
+## Building, testing and deploying
+
+Everything about getting the app up and running
+
+### Development
+
+1. Use rvm
+1. Instal the appropriate Ruby as declared in the Gemfile
+1. Run `bundle exec rails s`
+1. visit `http://localhost:3000`
+
+### Production
+
+1. Sign up for Heroku
+1. Install the Heroku CLI
+1. Clone this repo and run `heroku create`
+1. Set the appropriate buildpack using `heroku buildpacks:set https://github.com/bundler/heroku-buildpack-bundler2`
+1. Push using `git push heroku master`
+1. Migrate using `heroku run bundle exec rails db:migrate`
+1. `heroku open` to interact with the website
+
+### CI/CD
+
+While I usually wouldn't mind documenting a wonderful CI/CD solution here, I've already done it in
+[_How to Build an Effective Initial Deployment Pipeline_](https://www.toptal.com/devops/effective-ci-cd-deployment-pipeline) and so, documenting it here again would be redundant. I've added a template (`.gitlab-ci.yml.template`) that requires you to tweak `$INSERAPPNAME`. Follow the instructions in the article
+to end up with a _free_ CI/CD flow that looks like this:
+
+![Illustration of example CI/CD flow](https://uploads.toptal.io/blog/image/126047/toptal-blog-image-1525441763364-360ead3757f3b8cc747ce0ceb7891d84.png)
+
 ## Evaluation
 
 Evaluation of your submission will be based on the following criteria.
