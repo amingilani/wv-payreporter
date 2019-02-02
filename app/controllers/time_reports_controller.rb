@@ -1,3 +1,5 @@
+# This appropriately creates `TimeReport`s, and handles page redirection back to the root_path,
+# along with the appropriate `flash` message
 class TimeReportsController < ApplicationController
   def create
     file = params[:time_report][:file]
