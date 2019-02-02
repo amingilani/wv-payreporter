@@ -25,6 +25,12 @@ class TimeReportsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div', 'A time report with this report id was already imported.'
   end
 
+  def upload_an_empty_time_report
+    assert_difference('TimeLog.count', 0) { upload_an_invalid_file_as_a_time_report }
+    follow_redirect!
+    assert_select 'div', 'File not uploaded, or invalid.'
+  end
+
   def download_a_csv_payroll_report
     get payroll_report_url(format: :csv)
     assert_response :success
@@ -46,6 +52,13 @@ class TimeReportsControllerTest < ActionDispatch::IntegrationTest
                'text/csv'
              )
            }
+         }
+  end
+
+  def upload_an_invalid_file_as_a_time_report
+    post time_reports_url,
+         params: {
+           time_report: 'Not a time report'
          }
   end
 end
