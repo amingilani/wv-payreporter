@@ -168,7 +168,13 @@ I used a tableless model and service objects, as well as raw SQL queries instead
 
 > 5. Did you separate any concerns in your application? Why or why not?
 
-No, this app wasn't complicated enough to require shared logic. In fact, no controllers or models share any logic
+Yes, I used Ruby on Rails — it's an MVC platform. Doing things the Rails way automatically leads to
+a separation of concerns. I also created service objects to keep my controllers clean, and only
+concerned (no pun intended) about the application logic, delegating the database calls and decoration
+to service objects instead.
+
+If I've misunderstood this question and you're asking about Concerns in Rails: No, this app wasn't
+complicated enough to require shared logic among models and controllers.
 
 > 6. Does your solution use appropriate data types for the problem as described?
 
