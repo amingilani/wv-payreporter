@@ -43,6 +43,17 @@ Key features:
 + I also allowed the Payroll Report to be downloaded as CSV, and served it over JSON to demonstrate
   my abilities.
 
+There's **one caveat** of the single table decision, but it's fine given the use-case. It is technically
+possible for the same report_id to be uploaded twice. Since the validation on whether
+a Time Report's report_id already exists in the database happens at the application layer: if a user
+opens two sessions and uploads a Time Report from two pages at _exactly_ the same time, and both
+`TimeReport` validations run before either has been saved to the database, then both validations
+will succeed and save the time_report.
+
+However, given that app this is for a single client, and this case is incredibly hard to trigger
+unless you're being hit by hundreds or thousands of requests a second, the risk was worth taking
+to demonstrate a tableless model.
+
 ## Application
 
 Let's walk over key parts of the application. The `schema.rb` only defines one important table, since a "Time Report" is probably a collection of Time Logs, that's what the table is:
