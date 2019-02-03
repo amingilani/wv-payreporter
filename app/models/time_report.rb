@@ -39,14 +39,13 @@ class TimeReport
     time_log
   end
 
+  # rubocop:disable Style/GuardClause
   # a validation to ensure that the report id isn't already in the database
   def report_should_not_already_exist
     unless TimeLog.find_by(report_id: @report_id).nil?
-      errors
-        .add(
-          :report_id,
-          'A time report with this report id was already imported.'
-        )
+      errors.add(:report_id,
+                 'A time report with this report id was already imported.')
     end
   end
+  # rubocop:enable Style/GuardClause
 end

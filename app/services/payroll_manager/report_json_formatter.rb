@@ -1,5 +1,5 @@
 module PayrollManager
-  # This takes a Payroll Report and outputs the same as a hash — to render from our API as JSON
+  # This takes a Payroll Report and outputs the same as a hash, to render from our API as JSON
   class ReportJsonFormatter < ApplicationService
     def initialize(report)
       @report = report

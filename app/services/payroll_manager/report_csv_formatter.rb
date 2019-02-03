@@ -1,7 +1,7 @@
 require 'csv'
 
 module PayrollManager
-  # This takes a Payroll Report and outputs the same in CSV — ready to download from our application
+  # This takes a Payroll Report and outputs the same in CSV, ready to download from our application
   class ReportCsvFormatter < ApplicationService
     def initialize(report)
       @report = report
