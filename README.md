@@ -100,7 +100,8 @@ Also, misc:
 
 ## Building, testing and deploying
 
-Everything about getting the app up and running
+Everything about getting the app up and running. Please note that this app explicitly requires
+PostgreSQL, and has been tested on 10.4+
 
 ### Testing
 
