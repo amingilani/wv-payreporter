@@ -94,6 +94,9 @@ I prefer HAML because I don't like typing.
   * `_human_friendly_report.html.haml`: A human-friendly version of the Payroll Report
   * `_printer_friendly_report.html.haml`: A printer friendly version of the Payroll Report
 
+Also, misc:
+  * the `ApplicationHelper` contains a method to help translate flash messages to Semantic UI
+  classes
 
 ## Building, testing and deploying
 
