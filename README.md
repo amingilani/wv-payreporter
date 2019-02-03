@@ -141,6 +141,9 @@ to end up with a _free_ CI/CD flow that looks like this:
 1. I did not use Rspec for testing even though I usually exclusively use it. The time required
   to setup Rspec didn't justify the use, and I ended up using Minitest for the same
   effect.
+1. I did not guard against a malformed CSV file because the challenge specifically guaranteed
+  that I did not need to. Please ensure the report_id is included, and the headers are given. Their
+  order does not matter.
 
 ## Evaluation
 
