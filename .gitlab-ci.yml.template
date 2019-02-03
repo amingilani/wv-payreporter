@@ -47,7 +47,7 @@ test:
     - bundle install -j $(nproc) --path vendor
     - bundle exec rake db:setup RAILS_ENV=test
   script:
-    - bundle exec rake spec
+    - bundle exec rails test
     - bundle exec rubocop
 
 
