@@ -9,6 +9,7 @@ an MVP.
 Key features:
 
 + 95.63%+ test coverage
++ Mobile ready
 + Automatic model annotations
 + Automatic Entity Relationship Diagram generation (`erd.pdf`)
 + Tableless models
