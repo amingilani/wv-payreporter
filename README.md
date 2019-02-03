@@ -172,4 +172,4 @@ No, this app wasn't complicated enough to require shared logic. In fact, no cont
 
 > 6. Does your solution use appropriate data types for the problem as described?
 
-Data-types were not described. I inferred them, and this question made me feel like you _wanted_ me to use an integer for Report IDs. In real life, however, I would've used a string because they're meta properties the user supplied, and one user's Report IDs data-type don't necessarily have to match another's
+Data-types were not described. I inferred them, and this question made me feel like you _wanted_ me to use an integer for Report IDs — and so I did. In real life, however, I would've used a string because they're meta properties the user supplies, and one user's Report IDs' data-type doesn't necessarily have to match another's
