@@ -148,7 +148,7 @@ to end up with a _free_ CI/CD flow that looks like this:
 
 ## Evaluation
 
-Evaluation of your submission will be based on the following criteria.
+> Evaluation of your submission will be based on the following criteria.
 
 
 > 1. Did you follow the instructions for submission?
